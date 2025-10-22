@@ -1,0 +1,11 @@
+{
+    "discription": "From here the server get the formations and paths to local homepage and books. You can specified formation in lastOpened or platform",
+    "version": "17.9.25",
+    "formation": "",
+    "pagePath": "C:/Users/user/Downloads/Learning-Server/src/",
+    "booksPath": "C:/Users/user/Downloads/Learning-Server/books/",
+    "pathToCertificate": "",
+    "dictionary": {
+        "Test": "טסט"
+    }
+}

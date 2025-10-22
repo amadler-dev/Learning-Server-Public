@@ -1,0 +1,163 @@
+/* fonts */
+@font-face {
+    font-family: 'heebo';
+    src: local('heebo'),
+         url('./resources/fonts/Heebo-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'heebo-bold';
+    src: local('heebo-bold'),
+         url('./resources/fonts/Heebo-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'heebo-black';
+    src: local('heebo-black'),
+         url('./resources/fonts/Heebo-Black.ttf') format('truetype');
+    font-weight: 900;
+}
+@font-face {
+    font-family: 'heebo-light';
+    src: local('heebo-light'),
+         url('./resources/fonts/Heebo-Light.ttf') format('truetype');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'heebo-medium';
+    src: local('heebo-medium'),
+         url('./resources/fonts/Heebo-Medium.ttf') format('truetype');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'heebo-semibold';
+    src: local('heebo-semibold'),
+         url('./resources/fonts/Heebo-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'heebo-thin';
+    src: local('heebo-thin'),
+         url('./resources/fonts/Heebo-Thin.ttf') format('truetype');
+    font-weight: 100;
+}
+@font-face {
+    font-family: 'heebo-extrabold';
+    src: local('heebo-extrabold'),
+         url('./resources/fonts/Heebo-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+}
+@font-face {
+    font-family: 'heebo-extralight';
+    src: local('heebo-extralight'),
+         url('./resources/fonts/Heebo-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+}
+
+
+/* general */
+.flex {
+    display: flex;;
+}
+svg {
+    height: 5vw;
+    width: auto;
+}
+
+/* body */
+html {
+    height: 100%;
+    background-color: rgb(32, 56, 100);
+}
+.learning-body {
+    height: 100%;
+    background-image: url('./resources/background.png');
+    background-size: cover;
+    direction: rtl;
+    font-family: 'heebo';
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+h1 {
+    font-size: 6vw;
+    font-weight: 700;
+    margin: 13% 2% 0 2%;
+    text-align: center;
+}
+h2 {
+    font-size: 3vw;
+    font-weight: 400;
+    margin: -15px 0 4vw 0;
+    text-align: center;
+}
+h3 {
+    font-size: 1.8vw;
+    font-weight: 400;
+}
+.bookButton {
+    text-align: center;
+    cursor: pointer;
+    /* height: 150px; */
+    padding: 15px 0;
+    width: 15%;
+    background-color: transparent;
+    border-radius: 25px;
+    border: 2px #fff solid;
+    text-decoration: none;
+    color: #fff;
+    direction: rtl;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+    place-content: center;
+}
+.bookButton:hover {
+    background-color: rgb(255, 222, 96);
+    color: #000;
+    border: 2px rgb(255, 222, 96) solid;
+}
+.bookButton div {
+    font-size: 1.8vw;
+    margin: 0 10%;
+}
+.books {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 2%;
+    justify-content: center;
+}
+img.logo {
+    object-fit: contain;
+    width: 10vw;
+}
+
+/* header */
+.header {
+    justify-content: space-between;
+    background-color: #00000055;
+    padding-inline: 4vw;
+}
+.iconButton {
+    margin: auto;
+    padding-left: 50px;
+    cursor: pointer;
+    display: none;
+}
+.icon:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+.text-clearance {
+    font-size: 12px;
+    font-weight: 700;
+    align-self: center;
+}
+.devider {
+    width: 3px;
+    height: 50%;
+    background-color: #fff;
+    align-self: center;
+    margin-inline: 25px;
+}

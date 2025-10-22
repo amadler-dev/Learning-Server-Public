@@ -1,0 +1,9 @@
+package-lock.json
+log-learning.json
+nodemon.json
+.prettierrc
+dist
+node_modules
+*.zip
+*.log
+src/certificate/*

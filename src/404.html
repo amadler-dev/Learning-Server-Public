@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta property="og:title" content="Learning Application">
+    <meta charset="UTF-8">
+    <title>Learning Application</title>
+
+    <script>
+        setTimeout(() => {
+            window.location.href = '/index.html'; // can i send to '/' ?
+        }, 10000);
+    </script>
+
+    <style>        
+    /* general */
+    .flex {
+        display: flex;;
+    }
+
+    /* body */
+    html {
+        height: 100%;
+        background-color: rgb(32, 56, 100);
+    }
+    .learning-body {
+        height: 100%;
+        background-image: url('./resources/background.png');
+        background-size: cover;
+        direction: rtl;
+        font-family: 'heebo', 'roboto', sans-serif;
+        color: #fff;
+        padding: 0;
+        margin: 0;
+        position: relative;
+        text-align: center;
+    }
+    h1 {
+        font-size: 6vw;
+        font-weight: 700;
+        margin: 13% 2% 0 2%;
+        text-align: center;
+    }
+    h2 {
+        font-size: 3vw;
+        font-weight: 400;
+        margin: -15px 0 4vw 0;
+        text-align: center;
+    }
+    h3 {
+        font-size: 1.8vw;
+        font-weight: 400;
+    }
+    .error-message {
+        color: #ffde60
+    }
+    img.logo {
+        object-fit: contain;
+        width: 10vw;
+    }
+
+    
+    /* header */
+    .header {
+        justify-content: space-between;
+        background-color: #00000055;
+        padding-inline: 4vw;
+    }
+    .iconButton {
+        margin: auto;
+        padding-left: 50px;
+        cursor: pointer;
+    }
+    .icon:hover {
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+    }
+    .text-clearance {
+        font-size: 12px;
+        font-weight: 700;
+        align-items: center;
+    }
+    .devider {
+        width: 3px;
+        height: 50%;
+        background-color: #fff;
+        align-self: center;
+        margin-inline: 25px;
+    }
+    </style>
+</head>
+
+<body class="learning-body">
+    
+    <div class="header flex">
+        <div class="flex">
+            <h3>מערכת למידה</h3>
+            <div class="devider"></div>
+        </div>
+    </div>
+
+    <h1>404</h1>
+    <h3>
+        לא נמצאה מערכת למידה
+        <br>
+        קובץ האינדקס חסר
+        <br>
+        נא לפנות ל
+    </h3>
+
+
+
+</body>
+</html>
