@@ -88,54 +88,66 @@ async function LocalPrivateKey() {
 // run first
 async function GetCertFiles() {
 
-	try {
-		CreateLocalCertFiles();
+	// if path to certificate is empty - use temp cert
+	if(remotePath === '' || remotePath === null || remotePath === undefined) {
+		console.log('Path to certificate on linux machine is not defined. using temp cert');
 
-		await LocalPrivateKey();
-		
-		// get cert from linux
-		conn.on('ready', () => {
+		localCert = __dirname + '/src/certificate/cert.crt';
+		localKey = __dirname + '/src/certificate/cert.key';
 
-			try {
-				console.log('Connected to linux machine');
-				conn.sftp((err, sftp) => {
-					if(err) throw err;
+		startServer();
 
-					// download cert and key
-					sftp.fastGet(remoteCert, localCert, (err) => {
+	} else {
+
+		try {
+			CreateLocalCertFiles();
+
+			await LocalPrivateKey();
+			
+			// get cert from linux
+			conn.on('ready', () => {
+
+				try {
+					console.log('Connected to linux machine');
+					conn.sftp((err, sftp) => {
 						if(err) throw err;
-						console.log('Certificate downloaded successfully.');
 
-						sftp.fastGet(remoteKey, localKey, (err) => {
+						// download cert and key
+						sftp.fastGet(remoteCert, localCert, (err) => {
 							if(err) throw err;
-							console.log('Key downloaded successfully.');
+							console.log('Certificate downloaded successfully.');
 
-							conn.end();
-							startServer(); // run server function
+							sftp.fastGet(remoteKey, localKey, (err) => {
+								if(err) throw err;
+								console.log('Key downloaded successfully.');
+
+								conn.end();
+								startServer(); // run server function
+							});
 						});
 					});
-				});
-				
-			} catch (err) {
-				console.error('Error downloading files from linux machine:', err);
-			}
+					
+				} catch (err) {
+					console.error('Error downloading files from linux machine:', err);
+				}
 
-		}).on('error', () => {
+			}).on('error', () => {
 
-			console.log('learning server stop running. \nerror: connection to linux machine failed');
+				console.log('learning server stop running. \nerror: connection to linux machine failed');
 
-		}).connect({
-			host: data.IPlocalVM,
-			port: 22,
-			username: 'Test',
-			password: 'Test',
-			// debug: (msg) => console.log('SSH DEBUG: ', msg), // for testing
-			privateKey: fs.readFileSync(localPrivateKey),
-			keepaliveInterval: 20000, // 20 seconds
-			keepaliveCountMax: 3, // 3 keepalive packets
-		});
-	} catch (err) {
-		console.error('Error creating local certificate files:', err);
+			}).connect({
+				host: data.IPlocalVM,
+				port: 22,
+				username: 'Test',
+				password: 'Test',
+				// debug: (msg) => console.log('SSH DEBUG: ', msg), // for testing
+				privateKey: fs.readFileSync(localPrivateKey),
+				keepaliveInterval: 20000, // 20 seconds
+				keepaliveCountMax: 3, // 3 keepalive packets
+			});
+		} catch (err) {
+			console.error('Error creating local certificate files:', err);
+		}
 	}
 }
 
@@ -201,9 +213,6 @@ async function pathExists(path) {
 async function startServer() {
 
 	try {
-		localCert = __dirname + '/src/certificate/cert.crt';
-		localKey = __dirname +  '/src/certificate/key.pem';
-
 		const options = {
 			cert: fs.readFileSync(localCert, 'utf-8'),
 			key: fs.readFileSync(localKey, 'utf-8'),
@@ -328,9 +337,4 @@ async function startServer() {
 }
 
 // run function
-if(remotePath === '') {
-	console.log('Path to certificate on linux machine is not defined. using temp cert');
-	startServer();
-} else {
-	GetCertFiles();
-}
+GetCertFiles();
